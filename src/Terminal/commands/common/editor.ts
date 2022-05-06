@@ -4,6 +4,7 @@ import { ScriptEditorRouteOptions } from "../../../ui/Router";
 import { Router } from "../../../ui/GameRoot";
 import { BaseServer } from "../../../Server/BaseServer";
 import { isScriptFilename } from "../../../Script/isScriptFilename";
+import { isValidRegularFile } from "../../../Script/isValidRegularFile";
 import { CursorPositions } from "../../../ScriptEditor/CursorPositions";
 import { Script } from "../../../Script/Script";
 import { isEmpty } from "lodash";
@@ -123,9 +124,9 @@ export function commonEditor(
         return [filepath, code];
       }
 
-      if (filename.endsWith(".txt")) {
-        const filepath = Terminal.getFilepath(filename);
-        const txt = Terminal.getTextFile(filename);
+      if (isValidRegularFile(filename)) {
+        const filepath = terminal.getFilepath(filename);
+        const txt = terminal.getTextFile(player, filename);
         return [filepath, txt === null ? "" : txt.text];
       }
 

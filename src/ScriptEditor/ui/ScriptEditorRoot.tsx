@@ -231,10 +231,20 @@ export function Root(props: IProps): React.ReactElement {
     };
   }, [options, editorRef, editor, vimEditor]);
 
+  // Decides what language support gets used to open files with.
+  function chooseLanguage(fn : string) : string {
+    if (fn.endsWith(".json")) return "json";
+    if (fn.endsWith(".txt")) return "plaintext";
+    return "javascript";
+  }
+
   // Generates a new model for the script
   function regenerateModel(script: OpenScript): void {
     if (monacoRef.current !== null) {
-      script.model = monacoRef.current.editor.createModel(script.code, script.isTxt ? "plaintext" : "javascript");
+      script.model = monacoRef.current.editor.createModel(
+        script.code,
+        chooseLanguage(script.fileName)
+      );
     }
   }
 
@@ -397,8 +407,11 @@ export function Root(props: IProps): React.ReactElement {
             code,
             props.hostname,
             new monacoRef.current.Position(0, 0),
-            monacoRef.current.editor.createModel(code, filename.endsWith(".txt") ? "plaintext" : "javascript"),
+            monacoRef.current.editor.createModel(code, chooseLanguage(filename)),
           );
+
+          console.log(monaco.languages.getLanguages())
+
           openScripts.push(newScript);
           currentScript = newScript;
           editorRef.current.setModel(newScript.model);
@@ -474,7 +487,7 @@ export function Root(props: IProps): React.ReactElement {
       const script = new Script();
       script.saveScript(scriptToSave.fileName, scriptToSave.code, Player.currentServer, server.scripts);
       server.scripts.push(script);
-    } else if (scriptToSave.isTxt) {
+    } else if (isValidRegularFile(scriptToSave.fileName)) {
       for (let i = 0; i < server.textFiles.length; ++i) {
         if (server.textFiles[i].fn === scriptToSave.fileName) {
           server.textFiles[i].write(scriptToSave.code);
@@ -556,7 +569,7 @@ export function Root(props: IProps): React.ReactElement {
       const script = new Script();
       script.saveScript(currentScript.fileName, currentScript.code, Player.currentServer, server.scripts);
       server.scripts.push(script);
-    } else if (currentScript.isTxt) {
+    } else if (isValidRegularFile(currentScript.fileName)) {
       for (let i = 0; i < server.textFiles.length; ++i) {
         if (server.textFiles[i].fn === currentScript.fileName) {
           server.textFiles[i].write(currentScript.code);

@@ -2,6 +2,8 @@ import { dialogBoxCreate } from "./ui/React/DialogBox";
 import { BaseServer } from "./Server/BaseServer";
 import { Generic_fromJSON, Generic_toJSON, IReviverValue, Reviver } from "./utils/JSONReviver";
 import { removeLeadingSlash, isInRootDirectory } from "./Terminal/DirectoryHelpers";
+import { isValidRegularFile } from "./Script/isValidRegularFile";
+
 
 /**
  * Represents a plain text file that is typically stored on a server.
@@ -32,7 +34,7 @@ export class TextFile {
   }
 
   constructor(fn = "", txt = "") {
-    this.fn = (fn.endsWith(".txt") ? fn : `${fn}.txt`).replace(/\s+/g, "");
+    this.fn = (isValidRegularFile(fn) ? fn : `${fn}.txt`).replace(/\s+/g, "");
     this.text = txt;
   }
 
