@@ -437,38 +437,37 @@ BitNodes["BitNode13"] = new BitNode(
       Each level of this Source-File increases the size of Stanek's Gift.
     </>
   ),
-  );
-  BitNodes["BitNode14"] = new BitNode(
-    14,
-    2,
-    "Bitrunner",
-    "There is no reward without risk",
-    (
-      <>
-        "His eyes were eggs of unstable crystal, vibrating with a frequency whose name was rain and the sound of trains, suddenly sprouting a humming forest of hair-fine glass spines."
-        <br />
-        ― William Gibson, Neuromancer
-        <br />
-        <br />
-        There is no reward without risk.
-        Servers in this BitNode are protected by powerful defense mechanisms able to kill hackers who approach unprepared.
-        Additional tools are available which will allow you to succeed.
-        Careful planning and execution will be required in order to escape your chains.
-        <br />
-        <br />
-        In this test version of the game you have two hours to succeed or fail.
-        Every method of earning that isn't hacking has been nerfed to the ground.
-        Good luck!
-        <br />
-        <br />
-        Destroying this BitNode will give you Source-File N,
-        or if you already have this Source-File it will upgrade its level up to a maximum of 3.
-        <br />
-        <br />
-        [Insert explanation of unique reward here]
-      </>
-    ),
-  );
+);
+BitNodes["BitNode14"] = new BitNode(
+  14,
+  2,
+  "Bitrunner",
+  "There is no reward without risk",
+  (
+    <>
+      "His eyes were eggs of unstable crystal, vibrating with a frequency whose name was rain and the sound of trains,
+      suddenly sprouting a humming forest of hair-fine glass spines."
+      <br />
+      ― William Gibson, Neuromancer
+      <br />
+      <br />
+      There is no reward without risk. Servers in this BitNode are protected by powerful defense mechanisms able to kill
+      hackers who approach unprepared. Additional tools are available which will allow you to succeed. Careful planning
+      and execution will be required in order to escape your chains.
+      <br />
+      <br />
+      In this test version of the game you have two hours to succeed or fail. Every method of earning that isn't hacking
+      has been nerfed to the ground. Good luck!
+      <br />
+      <br />
+      Destroying this BitNode will give you Source-File N, or if you already have this Source-File it will upgrade its
+      level up to a maximum of 3.
+      <br />
+      <br />
+      [Insert explanation of unique reward here]
+    </>
+  ),
+);
 
 export const defaultMultipliers: IBitNodeMultipliers = {
   HackingLevelMultiplier: 1,

@@ -320,6 +320,11 @@ const grafting: IMap<any> = {
   graftAugmentation: 7.5,
 };
 
+// Bitrunner API
+const bitrunner: IMap<any> = {
+  getServerExtension: 1,
+};
+
 export const RamCosts: IMap<any> = {
   hacknet,
   stock,
@@ -333,6 +338,7 @@ export const RamCosts: IMap<any> = {
   stanek,
   ui,
   grafting,
+  bitrunner,
 
   sprintf: 0,
   vsprintf: 0,
