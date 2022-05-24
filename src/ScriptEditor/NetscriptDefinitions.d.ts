@@ -534,19 +534,18 @@ export interface Server {
   serverGrowth: number;
 }
 
-
 /**
  * Bitrunner extension details of a single server.
  * @public
  */
 export interface bitrunnerExtension {
-  readonly threat : number;
-  readonly damageType : number;
-  readonly maxHealth : number;
-  health : number;
-  target : string;
-  readonly maxCooldown : number;
-  cooldown : number;
+  readonly threat: number;
+  readonly damageType: number;
+  readonly maxHealth: number;
+  health: number;
+  target: string;
+  readonly maxCooldown: number;
+  cooldown: number;
 }
 
 /**
@@ -1127,13 +1126,11 @@ export interface SleeveTask {
   factionWorkType: string;
 }
 
-
 /**
  * Bitrunner API
  * @public
  */
 export interface Bitrunner {
-
   /**
    * Returns the Bitrunner serverExtension object for the given server.
    * Defaults to the running script's server if host is not specified.

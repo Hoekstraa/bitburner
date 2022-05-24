@@ -1,4 +1,3 @@
-
 import { INetscriptHelper } from "./INetscriptHelper";
 import { WorkerScript } from "../Netscript/WorkerScript";
 import { IPlayer } from "../PersonObjects/IPlayer";
@@ -13,13 +12,14 @@ export function NetscriptBitrunner(
   workerScript: WorkerScript,
   helper: INetscriptHelper,
 ): INetscriptBitrunner {
-
   const checkBitrunnerAccess = function (func: string): number {
-    if (player.bitNodeN === 14)
-      return player.bitNodeN;
+    if (player.bitNodeN === 14) return player.bitNodeN;
     else
-      throw helper.makeRuntimeErrorMsg(`bitrunner.${func}`, "You do not currently have access to the Bitrunner API. You must be in BitNode-14.");
-  }
+      throw helper.makeRuntimeErrorMsg(
+        `bitrunner.${func}`,
+        "You do not currently have access to the Bitrunner API. You must be in BitNode-14.",
+      );
+  };
 
   const updateRam = (funcName: string): void =>
     helper.updateDynamicRam(funcName, getRamCost(player, "bitrunner", funcName));
@@ -29,10 +29,13 @@ export function NetscriptBitrunner(
       updateRam("getServerExtension");
       checkBitrunnerAccess("getServerExtension");
       const server = GetServer(host || workerScript.hostname);
-      if (server instanceof Server && server.modules.bitrunner){
-          return <BitrunnerServerExtension>server.modules.bitrunner;
+      if (server instanceof Server && server.modules.bitrunner) {
+        return <BitrunnerServerExtension>server.modules.bitrunner;
       }
-      throw helper.makeRuntimeErrorMsg(`bitrunner.getServerExtension`, "Bitrunner module is loaded incorrectly or there is a type mismatch.");
-    }
+      throw helper.makeRuntimeErrorMsg(
+        `bitrunner.getServerExtension`,
+        "Bitrunner module is loaded incorrectly or there is a type mismatch.",
+      );
+    },
   };
 }

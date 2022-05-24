@@ -116,7 +116,7 @@ interface IServerParams {
   [key: string]: any;
 }
 
-export function initForeignServers(homeComputer: Server, bitNodeN : number): void {
+export function initForeignServers(homeComputer: Server, bitNodeN: number): void {
   /* Create a randomized network for all the foreign servers */
   //Groupings for creating a randomized network
   const networkLayers: Server[][] = [];
@@ -166,7 +166,7 @@ export function initForeignServers(homeComputer: Server, bitNodeN : number): voi
       server.messages.push(filename);
     }
 
-    if(bitNodeN === 14) {
+    if (bitNodeN === 14) {
       server.modules.bitrunner = new BitrunnerServerExtension(server.hostname);
     }
 

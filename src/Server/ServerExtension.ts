@@ -1,1 +1,1 @@
-export class ServerExtension{}
+export class ServerExtension {}
