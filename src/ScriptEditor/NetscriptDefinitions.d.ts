@@ -540,8 +540,13 @@ export interface Server {
  * @public
  */
 export interface bitrunnerExtension {
-  /** Demo value */
-  proxyHealth: number;
+  readonly threat : number;
+  readonly damageType : number;
+  readonly maxHealth : number;
+  health : number;
+  target : string;
+  readonly maxCooldown : number;
+  cooldown : number;
 }
 
 /**

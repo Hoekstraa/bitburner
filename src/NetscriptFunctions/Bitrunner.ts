@@ -22,15 +22,15 @@ export function NetscriptBitrunner(
   }
 
   const updateRam = (funcName: string): void =>
-    helper.updateDynamicRam(funcName, getRamCost(player, "bladeburner", funcName));
+    helper.updateDynamicRam(funcName, getRamCost(player, "bitrunner", funcName));
 
   return {
     getServerExtension: function (host?: string): bitrunnerExtension {
       updateRam("getServerExtension");
       checkBitrunnerAccess("getServerExtension");
       const server = GetServer(host || workerScript.hostname);
-      if (server instanceof Server && server.modules.bitrunner instanceof BitrunnerServerExtension){
-          return server.modules.bitrunner;
+      if (server instanceof Server && server.modules.bitrunner){
+          return <BitrunnerServerExtension>server.modules.bitrunner;
       }
       throw helper.makeRuntimeErrorMsg(`bitrunner.getServerExtension`, "Bitrunner module is loaded incorrectly or there is a type mismatch.");
     }

@@ -15,6 +15,7 @@ import { Script } from "./Script";
 import { WorkerScript } from "../Netscript/WorkerScript";
 import { areImportsEquals } from "../Terminal/DirectoryHelpers";
 import { IPlayer } from "../PersonObjects/IPlayer";
+import { work } from "../PersonObjects/Player/PlayerObjectGeneralMethods";
 
 export interface RamUsageEntry {
   type: "ns" | "dom" | "fn" | "misc";
@@ -236,6 +237,9 @@ async function parseOnlyRamCalculate(
         } else if (ref in workerScript.env.vars.singularity) {
           func = workerScript.env.vars.singularity[ref];
           refDetail = `singularity.${ref}`;
+        } else if (ref in workerScript.env.vars.bitrunner) {
+          func = workerScript.env.vars.bitrunner[ref];
+          refDetail = `bitrunner.${ref}`;
         } else {
           func = workerScript.env.vars[ref];
           refDetail = `${ref}`;

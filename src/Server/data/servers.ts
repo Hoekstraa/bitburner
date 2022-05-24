@@ -11,7 +11,7 @@ import { SpecialServers } from "./SpecialServers";
  * The metadata describing the base state of servers on the network.
  * These values will be adjusted based on Bitnode multipliers when the Server objects are built out.
  */
-interface IServerMetadata {
+export interface IServerMetadata {
   /**
    * When populated, the base security level of the server.
    */
