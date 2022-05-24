@@ -23,7 +23,7 @@ export class BitrunnerServerExtension extends ServerExtension {
   constructor(serverName: string) {
     super();
 
-    const metadata = serverMetadata.find((entry) => (entry.hostname = serverName));
+    const metadata = serverMetadata.find((entry) => (entry.hostname == serverName));
     if (!metadata) throw Error(`Bitrunner: server name non-existent in metadata.`);
 
     this.threat = minValue(metadata.networkLayer) * BitrunnerConstants.threatMult;
