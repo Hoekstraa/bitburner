@@ -125,8 +125,8 @@ export function commonEditor(
       }
 
       if (isValidRegularFile(filename)) {
-        const filepath = terminal.getFilepath(filename);
-        const txt = terminal.getTextFile(player, filename);
+        const filepath = Terminal.getFilepath(filename);
+        const txt = Terminal.getTextFile(filename);
         return [filepath, txt === null ? "" : txt.text];
       }
 

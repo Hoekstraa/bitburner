@@ -44,6 +44,7 @@ import { Modal } from "../../ui/React/Modal";
 
 import libSource from "!!raw-loader!../NetscriptDefinitions.d.ts";
 import { TextField, Tooltip } from "@mui/material";
+import { isValidRegularFile } from "../../Script/isValidRegularFile";
 
 interface IProps {
   // Map of filename -> code
